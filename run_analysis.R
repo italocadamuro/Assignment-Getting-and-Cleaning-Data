@@ -4,6 +4,7 @@
 ##
 ##
 colName<-function(){
+
   
   
   Body_Acc_Mean<-c(1,2,3)
@@ -544,13 +545,13 @@ print(names(complete_table))
 
 ## Question 5:
 ## the code is valid and commented out only because the script stops at quastion 4.
-##tmp3<-gather(complete_table, action , value1,  Body_Acc_Mean_X:fBodyBodyAccJerkMag_Std)
+tmp3<-gather(complete_table, action , value1,  Body_Acc_Mean_X:fBodyBodyAccJerkMag_Std)
 ##
-##q5<-group_by(tmp3, Subject, readable_actions, action)
-##final_<-summarize(q5, "average of:" = mean(value1))
+q5<-group_by(tmp3, Subject, readable_actions, action)
+final_<-summarize(q5, "average of:" = mean(value1))
 ##View(final_)
 ##
 ##
 ## write 
-##write.cvs(final_, file="C:\\e-books and youtube\\Coursera\\Data\\Getting and Cleaning Data\\UCI HAR Dataset\\final_.csv")
+write.cvs(final_, file="C:\\e-books and youtube\\Coursera\\Data\\Getting and Cleaning Data\\UCI HAR Dataset\\final_.csv")
 ##
