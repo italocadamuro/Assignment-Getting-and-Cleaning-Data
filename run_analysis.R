@@ -546,7 +546,7 @@ complete_table<-rbind(train_table, test_table)
 
 
 
-
+## result of Question4 for this assignment.
 print(names(complete_table))
 
 
