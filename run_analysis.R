@@ -451,10 +451,13 @@ library(tidyr)
 colNbr_<-colNbr()
 colName_<-colName()
 
+## the following is my working dir
+## setwd( "C:/e-books and youtube/Coursera/Data/Getting and Cleaning Data/UCI HAR Dataset/Submission")
 
 
+folder_train<- "../train"
 
-folder_train<- "C:\\Users\\User\\Documents\\UCI HAR Dataset\\train"
+## folder_train<- "C:\\Users\\User\\Documents\\UCI HAR Dataset\\train"
 ## read x_train
 ## tmp1<-read.table("C:\\Users\\User\\Documents\\UCI HAR Dataset\\train\\X_train.txt")
 ## train_observations<-read.table(paste(folder_train,"X_train.txt", sep="\\"))
@@ -471,7 +474,7 @@ train_observations<-readFile(folder_train, "X_train.txt")
 
 ##
 ## create a table from the subjects that performed the measuremants.
-subject<-read.table(paste(folder_train,"subject_train.txt", sep="\\"))
+subject<-read.table(paste(folder_train,"subject_train.txt", sep="/"))
 ## collect info:
 ##class (subject)
 ##dim(subject) ##  str(tmp1)
@@ -479,7 +482,7 @@ subject<-read.table(paste(folder_train,"subject_train.txt", sep="\\"))
 ##names(subject)<- "Subject"
 
 ## create a table from the movments that have generated the measurements.
-action<-read.table(paste(folder_train,"y_train.txt", sep="\\"))
+action<-read.table(paste(folder_train,"y_train.txt", sep="/"))
 ## collect info:
 ##class (action)
 ##dim(action) ##  str(tmp1)
@@ -496,6 +499,7 @@ train_observations<-select(train_observations, colNbr_)
 
 ## create one table from train_observations and subject 
 train_table<-cbind(subject, readable_actions, train_observations)
+names(train_table)[1]<-"Subject"
 
 
 
@@ -503,13 +507,13 @@ train_table<-cbind(subject, readable_actions, train_observations)
 
 
 ## read rest of the data:
-folder_test<-"C:\\Users\\User\\Documents\\UCI HAR Dataset\\test"
+folder_test<-"../test"
 ## test_observations<-read.table("C:\\Users\\User\\Documents\\UCI HAR Dataset\\test\\X_test.txt")
-test_observations<-read.table(paste(folder_test,"X_test.txt", sep="\\"))
+test_observations<-read.table(paste(folder_test,"X_test.txt", sep="/"))
 
 ##
 ## create a table from the subjec that performed the measuremants.
-subject<-read.table(paste(folder_test,"subject_test.txt", sep="\\"))
+subject<-read.table(paste(folder_test,"subject_test.txt", sep="/"))
 ## collect info:
 ##class (subject)
 ##dim(subject) ##  str(tmp1)
@@ -517,7 +521,7 @@ subject<-read.table(paste(folder_test,"subject_test.txt", sep="\\"))
 ##names(subject)<- "Subject"
 
 ## create a table from the movments that have generated the meaurements.
-action<-read.table(paste(folder_test,"y_test.txt", sep="\\"))
+action<-read.table(paste(folder_test,"y_test.txt", sep="/"))
 ## collect info:
 ##class (action)
 ##dim(action) ##  str(tmp1)
@@ -534,6 +538,7 @@ test_observations<-select(test_observations, colNbr_)
 
 ## create a table with the test_observations with  subject and readable_actions
 test_table<-cbind(subject, readable_actions, test_observations)
+names(test_table)[1]<-"Subject"
 
 
 ## rbind the train_table and the test_table with the train_table at the top
@@ -555,5 +560,5 @@ final_<-summarize(q5, "average of:" = mean(value1))
 ##
 ##
 ## write 
-write.cvs(final_, file="C:\\e-books and youtube\\Coursera\\Data\\Getting and Cleaning Data\\UCI HAR Dataset\\final_.csv")
+write.table(final_, file="final_.txt", row.name=FALSE )
 ##
