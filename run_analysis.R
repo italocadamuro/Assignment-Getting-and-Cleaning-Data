@@ -452,6 +452,8 @@ colNbr_<-colNbr()
 colName_<-colName()
 
 
+
+
 folder_train<- "C:\\Users\\User\\Documents\\UCI HAR Dataset\\train"
 ## read x_train
 ## tmp1<-read.table("C:\\Users\\User\\Documents\\UCI HAR Dataset\\train\\X_train.txt")
